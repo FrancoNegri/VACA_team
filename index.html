@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="http://jrain.oscitas.netdna-cdn.com/tutorial/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#datetimepicker1').datetimepicker(
+                { format: 'DD/MM/YYYY' }).on('dp.change', function (e) { $('#result').css('visibility','visible'); });
+            $('#result').css('visibility','hidden');
+            $(document).ready(function() {
+                var interval = setInterval(function() {
+                    var momentNow = moment();
+                    $('#date-part').html(momentNow.format('YYYY MMMM DD') + ' '
+                        + momentNow.format('dddd')
+                        .substring(0,3).toUpperCase());
+                    $('#time-part').html(momentNow.format('A hh:mm:ss'));
+                    $('#time-part2').html(momentNow.format('A hh:mm:ss'));
+                    $('#time-part3').html(momentNow.format('A hh:mm:ss'));
+                }, 100);
+
+                $('#stop-interval').on('click', function() {
+                    clearInterval(interval);
+                });
+            });
+
+        });
+    </script>
+    <div>
+        <div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tab" role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="nav-item active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Summary</a></li>
+                            <li class="nav-item"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Map</a></li>
+                            <li class="nav-item"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Historical Data</a></li>
+                            <li class="nav-item"><a href="#Section4" aria-controls="messages" role="tab" data-toggle="tab">Warnings</a></li>
+                            <li class="nav-item"><a href="#Section5" aria-controls="messages" role="tab" data-toggle="tab">+</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content tabs">
+                            <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+                                <h3><strong>Summary</strong></h3>
+                                <div>
+                                    <div class="p-1 text-dark"> <strong> Pasture quality and quantity </strong> </div>
+                                    <table style="width: 521px;">
+                                        <tbody>
+                                            <tr class="p-3 mb-2 bg-info text-white">
+                                                <td style="width: 310px;">Paddoc</td>
+                                                <td style="width: 240px;">Status</td>
+                                            </tr>
+                                            <tr style="background-color: lightgray;">
+                                                <td style="width: 310px;">P1</td>
+                                                <td style="width: 240px;">WARNING- Lack of pastures</td>
+                                            </tr>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 310px;">P2</td>
+                                            <td style="width: 240px;">OK</td>
+                                        </tr>
+                                    </tr>
+                                    <tr style="background-color: lightgray;">
+                                        <td style="width: 310px;">P3</td>
+                                        <td style="width: 240px;">OK</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>
+                            <div class="p-1 text-dark"><strong>Animal Health</strong></div>
+                            <table style="width: 521px;">
+                                <tbody>
+                                    <tr class="p-3 mb-2 bg-info text-white">
+                                        <td style="width: 310px;">Paddoc</td>
+                                        <td style="width: 240px;">Animals to assist</td>
+                                    </tr>
+                                    <tr style="background-color: lightgray;">
+                                        <td style="width: 310px;">P1</td>
+                                        <td style="width: 240px;">0 out of 47</td>
+                                    </tr>
+                                </tr>
+                                <tr>
+                                    <td style="width: 310px;">P2</td>
+                                    <td style="width: 240px;">0 out of 193</td>
+                                </tr>
+                            </tr>
+                            <tr style="background-color: lightgray;">
+                                <td style="width: 310px;">P3</td>
+                                <td style="width: 240px;">0 out of 129</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="Section2">
+                <h3>Map</h3>
+                <div style="display: flex">
+                    <p><img  style="width: 800px; overflow: hidden;" id="mapImage" src="maps/grafico.png" alt="" /></p>
+                    <div class="btn-group-toggle float-right" style="display: flex; flex-direction:column;">
+                        <a href="#" style="margin-bottom: 10px" class="btn btn-light btn-lg" onclick="pictureChange('maps/grafico.png')">
+                            <span class="glyphicon glyphicon-globe"></span> Map 
+                        </a>
+
+                        <a href="#" style="margin-bottom: 10px" class="btn btn-light btn-lg" onclick="pictureChange('maps/grafico2.png')">
+                            <span class="glyphicon glyphicon-globe" ></span> Satallite 
+                        </a>
+
+                        <a href="#" style="margin-bottom: 10px" class="btn btn-light btn-lg" onclick="pictureChange('maps/ground.png')">
+                            <span class="glyphicon glyphicon-globe" ></span> Ground 
+                        </a>
+                        <script>
+                            function pictureChange(image)
+                            {
+                                document.getElementById('mapImage').src=image;
+                            }           
+                        </script>
+
+                        <a href="#" style="margin-bottom: 10px" class="btn btn-light btn-lg">
+                            <span class="glyphicon glyphicon-zoom-in" ></span> Zoom In 
+                        </a>
+
+                        <a href="#" style="margin-bottom: 10px" class="btn btn-light btn-lg">
+                            <span class="glyphicon glyphicon-zoom-out" ></span> Zoom Out 
+                        </a>
+
+                        <a href="#" style="margin-bottom: 10px" class="btn btn-light btn-lg">
+                            <span class="glyphicon glyphicon-move" ></span> Explore
+                        </a>
+
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction:column;">
+                    <a href="#" style="margin-bottom: 10px" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-wrench"></span> Paddoc Configuration 
+                    </a>
+
+                    <a href="#" style="margin-bottom: 10px" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-wrench"></span> Cattle Configuration 
+                    </a>
+
+                </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="Section3">
+                <div>
+                    <h3>Historical Data</h3>
+
+                    <div style="display: flex; flex-direction: column;">
+                        <div style="display: flex;">
+                        <p>Report:</p>
+                        <select class="form-control" style="height: 100%;">
+                            <option selected>Alert History</option>
+                            <option value="2">Weather History</option>
+                            <option value="3">Cattle Condition History</option>
+                            <option value="3">Feeding History</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;">
+                        <p>From:</p>
+                        <div class="input-group date" data-provide="datepicker" style="width: 200px;">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <p>To:</p>
+                        <div  class="input-group date" name='date' id='datetimepicker1' data-provide="datepicker" style="width: 200px;">
+                            <input type="text" class="form-control">
+                            <div class="input-group-addon">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div id="result">
+                    <h3>Results</h3>
+                    <p> Pasture volume for paddoc </p>
+                    <p><img src="grassQuality.png" alt="" style="height: 400px" /></p>
+
+                    <p> Cattle insident for paddoc </p>
+                    <p><img src="cattleAccidents.png" alt="" style="height: 400px"/></p>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="Section4">
+                <div >
+                    <h3>Warnings</h3>
+
+                    <div style="display: flex; flex-direction:column;">
+
+                        <div style="display: flex; justify-content:space-around;">
+                            <p> 
+                                <img src="cosito.png" alt="" />
+                                Warning: Lack of pastures in paddoc 1 
+                            </p>
+
+                            <div>
+                                <a href="#" style="margin-bottom: 10px" class="btn btn-danger btn-lg">
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span> Detail
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="#" style="margin-bottom: 10px" class="btn btn-info btn-lg">
+                                    <span class="glyphicon glyphicon-search"></span> Map 
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="#" style="margin-bottom: 10px" class="btn btn-success btn-lg">
+                                    <span class="glyphicon glyphicon-ok"></span> Solve 
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                        <div style="display: flex; justify-content:space-around;">
+                            <p> 
+                                <img src="cosito.png" alt="" />
+                                Warning: Something horrible happened in paddoc 1 
+                            </p>
+                            <div>
+                                <a href="#" style="margin-bottom: 10px" class="btn btn-danger btn-lg">
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span> Detail
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="#" style="margin-bottom: 10px" class="btn btn-info btn-lg">
+                                    <span class="glyphicon glyphicon-search"></span> Map 
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="#" style="margin-bottom: 10px" class="btn btn-success btn-lg">
+                                    <span class="glyphicon glyphicon-ok"></span> Solve 
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="Section5">
+                <div style="display: flex; flex-direction:column;">
+                    <a href="#" style="margin-bottom: 10px" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-wrench"></span> Diet Configuration 
+                    </a>
+
+                    <a href="#" style="margin-bottom: 10px" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-wrench"></span> Pasture Rotation 
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<p>Last update: 7 march 2019<span id='time-part3'></span></p>
+</body>
+</html>
